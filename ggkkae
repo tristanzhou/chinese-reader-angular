@@ -1,0 +1,418 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex afbee02..e69de29 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,187 +0,0 @@[m
+[31m-# Angular QuickStart Source[m
+[31m-[![Build Status][travis-badge]][travis-badge-url][m
+[31m-[m
+[31m-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),[m
+[31m-the foundation for most of the documentation samples and potentially a good starting point for your application.[m
+[31m-[m
+[31m-It's been extended with testing support so you can start writing tests immediately.[m
+[31m-[m
+[31m-**This is not the perfect arrangement for your application. It is not designed for production.[m
+[31m-It exists primarily to get you started quickly with learning and prototyping in Angular**[m
+[31m-[m
+[31m-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.[m
+[31m-Please keep that in mind before posting issues and PRs.[m
+[31m-[m
+[31m-## Updating to a newer version of the Quickstart Repo[m
+[31m-[m
+[31m-From time to time the QuickStart will add be enhanced with support for new features or to reflect[m
+[31m-changes to the [official Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).[m
+[31m-[m
+[31m-You can update your existing project to an up-to-date QuickStart by following these instructions:[m
+[31m-- Create a new project using the [instructions below](#create-a-new-project-based-on-the-quickstart)[m
+[31m-- Copy the code you have in your project's `main.ts` file onto `src/app/main.ts` in the new project[m
+[31m-- Copy your old `app` folder into `src/app`[m
+[31m-- Delete `src/app/main.ts` if you have one (we now use `src/main.ts` instead)[m
+[31m-- Copy your old `index.html`, `styles.css` and `tsconfig.json` into `src/`[m
+[31m-- Install all your third party dependencies[m
+[31m-- Copy your old `e2e/` folder into `e2e/`[m
+[31m-- Copy over any other files you added to your project[m
+[31m-- Copy your old `.git` folder into your new project's root[m
+[31m-[m
+[31m-Now you can continue working on the new project.[m
+[31m-[m
+[31m-## Prerequisites[m
+[31m-[m
+[31m-Node.js and npm are essential to Angular development. [m
+[31m-    [m
+[31m-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">[m
+[31m-Get it now</a> if it's not already installed on your machine.[m
+[31m- [m
+[31m-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**[m
+[31m-by running `node -v` and `npm -v` in a terminal/console window.[m
+[31m-Older versions produce errors.[m
+[31m-[m
+[31m-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.[m
+[31m-[m
+[31m-## Create a new project based on the QuickStart[m
+[31m-[m
+[31m-Clone this repo into new project folder (e.g., `my-proj`).[m
+[31m-```shell[m
+[31m-git clone https://github.com/angular/quickstart  my-proj[m
+[31m-cd my-proj[m
+[31m-```[m
+[31m-[m
+[31m-We have no intention of updating the source on `angular/quickstart`.[m
+[31m-Discard the `.git` folder..[m
+[31m-```shell[m
+[31m-rm -rf .git  # OS/X (bash)[m
+[31m-rd .git /S/Q # windows[m
+[31m-```[m
+[31m-### Delete _non-essential_ files (optional)[m
+[31m-[m
+[31m-You can quickly delete the _non-essential_ files that concern testing and QuickStart repository maintenance[m
+[31m-(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`!)[m
+[31m-by entering the following commands while in the project folder:[m
+[31m-[m
+[31m-##### OS/X (bash)[m
+[31m-```shell[m
+[31m-xargs rm -rf < non-essential-files.osx.txt[m
+[31m-rm src/app/*.spec*.ts[m
+[31m-rm non-essential-files.osx.txt[m
+[31m-```[m
+[31m-[m
+[31m-##### Windows[m
+[31m-```shell[m
+[31m-for /f %i in (non-essential-files.txt) do del %i /F /S /Q[m
+[31m-rd .git /s /q[m
+[31m-rd e2e /s /q[m
+[31m-```[m
+[31m-[m
+[31m-### Create a new git repo[m
+[31m-You could [start writing code](#start-development) now and throw it all away when you're done.[m
+[31m-If you'd rather preserve your work under source control, consider taking the following steps.[m
+[31m-[m
+[31m-Initialize this project as a *local git repo* and make the first commit:[m
+[31m-```shell[m
+[31m-git init[m
+[31m-git add .[m
+[31m-git commit -m "Initial commit"[m
+[31m-```[m
+[31m-[m
+[31m->Recover the deleted `.gitignore` from the QuickStart repository [m
+[31m-if you lost it in the _Delete non-essential files_ step.[m
+[31m-[m
+[31m-Create a *remote repository* for this project on the service of your choice.[m
+[31m-[m
+[31m-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.[m
+[31m-```shell[m
+[31m-git remote add origin <repo-address>[m
+[31m-git push -u origin master[m
+[31m-```[m
+[31m-## Install npm packages[m
+[31m-[m
+[31m-> See npm and nvm version notes above[m
+[31m-[m
+[31m-Install the npm packages described in the `package.json` and verify that it works:[m
+[31m-[m
+[31m-```shell[m
+[31m-npm install[m
+[31m-npm start[m
+[31m-```[m
+[31m-[m
+[31m->Doesn't work in _Bash for Windows_ which does not support servers as of January, 2017.[m
+[31m-[m
+[31m-The `npm start` command first compiles the application, [m
+[31m-then simultaneously re-compiles and runs the `lite-server`.[m
+[31m-Both the compiler and the server watch for file changes.[m
+[31m-[m
+[31m-Shut it down manually with `Ctrl-C`.[m
+[31m-[m
+[31m-You're ready to write your application.[m
+[31m-[m
+[31m-### npm scripts[m
+[31m-[m
+[31m-We've captured many of the most useful commands in npm scripts defined in the `package.json`:[m
+[31m-[m
+[31m-* `npm start` - runs the compiler and a server at the same time, both in "watch mode".[m
+[31m-* `npm run build` - runs the TypeScript compiler once.[m
+[31m-* `npm run build:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.[m
+[31m-* `npm run serve` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by[m
+[31m-[John Papa](https://github.com/johnpapa) and[m
+[31m-[Christopher Martin](https://github.com/cgmartin)[m
+[31m-with excellent support for Angular apps that use routing.[m
+[31m-[m
+[31m-Here are the test related scripts:[m
+[31m-* `npm test` - compiles, runs and watches the karma unit tests[m
+[31m-* `npm run e2e` - compiles and run protractor e2e tests, written in Typescript (*e2e-spec.ts)[m
+[31m-[m
+[31m-## Testing[m
+[31m-[m
+[31m-The QuickStart documentation doesn't discuss testing.[m
+[31m-This repo adds both karma/jasmine unit test and protractor end-to-end testing support.[m
+[31m-[m
+[31m-These tools are configured for specific conventions described below.[m
+[31m-[m
+[31m-*It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.[m
+[31m-We recommend that you shut down one before starting another.*[m
+[31m-[m
+[31m-### Unit Tests[m
+[31m-TypeScript unit-tests are usually in the `src/app` folder. Their filenames must end in `.spec.ts`.[m
+[31m-[m
+[31m-Look for the example `src/app/app.component.spec.ts`.[m
+[31m-Add more `.spec.ts` files as you wish; we configured karma to find them.[m
+[31m-[m
+[31m-Run it with `npm test`[m
+[31m-[m
+[31m-That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.[m
+[31m-Both the compiler and the karma watch for (different) file changes.[m
+[31m-[m
+[31m-Shut it down manually with `Ctrl-C`.[m
+[31m-[m
+[31m-Test-runner output appears in the terminal window.[m
+[31m-We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.[m
+[31m-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and[m
+[31m-restart it. No worries; it's pretty qwarning: LF will be replaced by CRLF in package.json.
+The file will have its original line endings in your working directory.
+uick.[m
+[31m-[m
+[31m-### End-to-end (E2E) Tests[m
+[31m-[m
+[31m-E2E tests are in the `e2e` directory, side by side with the `src` folder.[m
+[31m-Their filenames must end in `.e2e-spec.ts`.[m
+[31m-[m
+[31m-Look for the example `e2e/app.e2e-spec.ts`.[m
+[31m-Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);[m
+[31m-we configured Protractor to find them.[m
+[31m-[m
+[31m-Thereafter, run them with `npm run e2e`.[m
+[31m-[m
+[31m-That command first compiles, then simultaneously starts the `lite-server` at `localhost:8080`[m
+[31m-and launches Protractor.  [m
+[31m-[m
+[31m-The pass/fail test results appear at the bottom of the terminal window.[m
+[31m-A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file[m
+[31m-which is easier to read; this file is excluded from source control.[m
+[31m-[m
+[31m-Shut it down manually with `Ctrl-C`.[m
+[31m-[m
+[31m-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master[m
+[31m-[travis-badge-url]: https://travis-ci.org/angular/quickstart[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 7353243..459c060 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -1,7 +1,7 @@[m
+ {[m
+[31m-  "name": "angular-quickstart",[m
+[32m+[m[32m  "name": "chinese-reader-angular",[m
+   "version": "1.0.0",[m
+[31m-  "description": "QuickStart package.json from the documentation, supplemented with testing support",[m
+[32m+[m[32m  "description": "chinese-reader-angular package.json",[m
+   "scripts": {[m
+     "build": "tsc -p src/",[m
+     "build:watch": "tsc -p src/ -w",[m
+[36m@@ -32,18 +32,18 @@[m
+     "@angular/platform-browser": "~2.4.0",[m
+     "@angular/platform-browser-dynamic": "~2.4.0",[m
+     "@angular/router": "~3.4.0",[m
+[31m-[m
+[32m+[m[32m    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.20",[m
+     "angular-in-memory-web-api": "~0.2.4",[m
+[31m-    "systemjs": "0.19.40",[m
+[32m+[m[32m    "bootstrap": "^4.0.0-alpha.6",[m
+     "core-js": "^2.4.1",[m
+     "rxjs": "5.0.1",[m
+[32m+[m[32m    "systemjs": "0.19.40",[m
+     "zone.js": "^0.7.4"[m
+   },[m
+   "devDependencies": {[m
+     "concurrently": "^3.2.0",[m
+     "lite-server": "^2.2.2",[m
+     "typescript": "~2.0.10",[m
+[31m-[m
+     "canonical-path": "0.0.2",[m
+     "tslint": "^3.15.1",[m
+     "lodash": "^4.16.4",[m
+[36m@@ -55,7 +55,6 @@[m
+     "karma-jasmine-html-reporter": "^0.2.2",[m
+     "protractor": "~4.0.14",[m
+     "rimraf": "^2.5.4",[m
+[31m-[m
+     "@types/node": "^6.0.46",[m
+     "@types/jasmine": "2.5.36"[m
+   },[m
+[1mdiff --git a/src/app/app.component.ts b/src/app/app.component.ts[m
+[1mindex 7fb173c..4d5c657 100644[m
+[1m--- a/src/app/app.component.ts[m
+[1m+++ b/src/app/app.component.ts[m
+[36m@@ -1,7 +1,31 @@[m
+[31m-import { Component } from '@angular/core';[m
+[32m+[m[32mimport { Component }      from '@angular/core';[m
+[32m+[m[32mimport { NgForm }         from '@angular/forms';[m
+[32m+[m[32mimport { ActivatedRoute, Router } from '@angular/router';[m
+[32m+[m
+[32m+[m[32mimport { Book }           from './books/entities/book';[m
+ [m
+ @Component({[m
+[31m-  selector: 'my-app',[m
+[31m-  template: `<h1>Hello {{name}}</h1>`,[m
+[32m+[m[32m    selector: 'my-app',[m
+[32m+[m[32m    // templateUrl: `<h1>Hello {{name}}</h1>`,[m
+[32m+[m[32m    templateUrl: 'app/app.component.html',[m
+ })[m
+[31m-export class AppComponent  { name = 'Angular'; }[m
+[32m+[m
+[32m+[m[32mexport class AppComponent {[m[41m [m
+[32m+[m[32m    name = 'Angular a';[m
+[32m+[m[32m    book: Book;[m
+[32m+[m
+[32m+[m[32m    constructor(private router: Router, private route: ActivatedRoute) {[m
+[32m+[m[32m      this.book = new Book();[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    search(searchForm: NgForm): void {[m
+[32m+[m[32m      console.log(searchForm.value);[m
+[32m+[m[32m      this.router.navigate([m
+[32m+[m[32m        ['books'],[m[41m [m
+[32m+[m[32m        {[m[41m [m
+warning: LF will be replaced by CRLF in src/app/app.component.ts.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in src/app/app.module.ts.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in src/index.html.
+The file will have its original line endings in your working directory.
+[32m+[m[32m          relativeTo: this.route,[m[41m [m
+[32m+[m[32m          queryParams: { searchText: searchForm.value.searchText }[m[41m [m
+[32m+[m[32m        }[m
+[32m+[m[32m      );[m[41m [m
+[32m+[m[32m    }[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/app/app.module.ts b/src/app/app.module.ts[m
+[1mindex 357b003..e552a00 100644[m
+[1m--- a/src/app/app.module.ts[m
+[1m+++ b/src/app/app.module.ts[m
+[36m@@ -1,11 +1,44 @@[m
+[31m-import { NgModule }      from '@angular/core';[m
+[31m-import { BrowserModule } from '@angular/platform-browser';[m
+[32m+[m[32mimport { NgModule }                   from '@angular/core';[m
+[32m+[m[32mimport { BrowserModule }              from '@angular/platform-browser';[m
+[32m+[m[32mimport { FormsModule }                from '@angular/forms';[m
+[32m+[m[32mimport { HttpModule, JsonpModule }    from '@angular/http';[m
+[32m+[m[32mimport { Safe }                       from './app.safe';[m
+ [m
+[31m-import { AppComponent }  from './app.component';[m
+[32m+[m[32mimport { AppComponent }               from './app.component';[m
+[32m+[m[32mimport { SignInComponent }            from './security/signin/signin.component';[m
+[32m+[m[32mimport { SignUpComponent }            from './security/signup/signup.component';[m
+[32m+[m[32mimport { ForgotPasswordComponent }    from './security/forgotpassword/forgotpassword.component';[m
+[32m+[m[32mimport { BooksComponent }             from './books/books.component';[m
+[32m+[m[32mimport { BookDetailComponent }        from './books/detail/book-detail.component';[m
+[32m+[m
+[32m+[m[32mimport { SignInService }              from './security/service/signin.service';[m
+[32m+[m[32mimport { BookService }                from './books/service/book.service';[m
+[32m+[m[32mimport { PageService }                from './books/service/page.service';[m
+[32m+[m
+[32m+[m
+[32m+[m[32mimport { AppRoutingModule }           from './app-routing.module';[m
+[32m+[m[32mimport { ReadingModule }              from './books/reading/reading.module';[m
+ [m
+ @NgModule({[m
+[31m-  imports:      [ BrowserModule ],[m
+[31m-  declarations: [ AppComponent ],[m
+[32m+[m[32m  imports:      [[m
+[32m+[m[32m    BrowserModule,[m
+[32m+[m[32m    FormsModule,[m
+[32m+[m[32m    HttpModule,[m
+[32m+[m[32m    JsonpModule,[m
+[32m+[m[32m    ReadingModule,[m
+[32m+[m[32m    AppRoutingModule,[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  declarations: [[m
+[32m+[m[32m    AppComponent,[m
+[32m+[m[32m    SignInComponent,[m
+[32m+[m[32m    SignUpComponent,[m
+[32m+[m[32m    ForgotPasswordComponent,[m
+[32m+[m[32m    BooksComponent,[m
+[32m+[m[32m    BookDetailComponent,[m
+[32m+[m[32m    Safe[m
+[32m+[m[32m  ],[m
+[32m+[m[32m  providers: [ SignInService, BookService, PageService ],[m
+   bootstrap:    [ AppComponent ][m
+ })[m
+[32m+[m
+ export class AppModule { }[m
+[1mdiff --git a/src/index.html b/src/index.html[m
+[1mindex 8327435..e2bb999 100644[m
+[1m--- a/src/index.html[m
+[1m+++ b/src/index.html[m
+[36m@@ -6,6 +6,13 @@[m
+     <meta charset="UTF-8">[m
+     <meta name="viewport" content="width=device-width, initial-scale=1">[m
+     <link rel="stylesheet" href="styles.css">[m
+[32m+[m[32m    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.css"/>[m
+[32m+[m
+[32m+[m[32m    <link rel="stylesheet" href="/assets/fontawesome/css/font-awesome.css"/>[m
+[32m+[m
+[32m+[m[32m    <script src="/assets/bootstrap/js/jquery-3.1.1.js"></script>[m
+[32m+[m[32m    <script src="/assets/tether/js/tether.js"></script>[m
+[32m+[m[32m    <script src="/assets/bootstrap/js/bootstrap.js"></script>[m
+ [m
+     <!-- Polyfill(s) for older browsers -->[m
+     <script src="node_modules/core-js/client/shim.min.js"></script>[m
+[1mdiff --git a/src/styles.css b/src/styles.css[m
+[1mindex 58e1a7d..a29f0ca 100644[m
+[1m--- a/src/styles.css[m
+[1m+++ b/src/styles.css[m
+[36m@@ -3,3 +3,35 @@[m [mh1 {[m
+   font-family: Arial, Helvetica, swarning: LF will be replaced by CRLF in src/styles.css.
+The file will have its original line endings in your working directory.
+ans-serif;[m
+   font-size: 250%;[m
+ }[m
+[32m+[m
+[32m+[m[32m.navbar-nav .nav-item1 {[m
+[32m+[m[32m    font-size: 0.8rem;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mbody1 {[m
+[32m+[m[32m    background-image: url('/assets/images/background.jpg');[m
+[32m+[m[32m    background-position: center top;[m
+[32m+[m[32m    background-size: 100% auto;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32mbody {[m
+[32m+[m[32m    background-color: #F6F6F6;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.nav-breadcrumb {[m
+[32m+[m[32m    background-color: #F6F6F6;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.frame {[m
+[32m+[m[32m  display: inline-block;[m
+[32m+[m[32m  background-color: #F6F6F6;[m
+[32m+[m[32m  border-radius: 15px;[m
+[32m+[m[32m  box-shadow: 1px 1px 10px 0px;[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m[32m.help-block {[m
+[32m+[m[32m  display: block;[m
+[32m+[m[32m  margin-top: 5px;[m
+[32m+[m[32m  margin-bottom: 10px;[m
+[32m+[m[32m  color: #737373;[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/src/systemjs.config.js b/src/systemjs.config.js[m
+[1mindex e91ba9b..5242e49 100644[m
+[1m--- a/src/systemjs.config.js[m
+[1m+++ b/src/systemjs.config.js[m
+[36m@@ -25,7 +25,10 @@[m
+ [m
+       // other libraries[m
+       'rxjs':                      'npm:rxjs',[m
+[31m-      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js'[m
+[32m+[m[32m      'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',[m
+[32m+[m
+[32m+[m[32m      // add ng-bootstrap location map[m
+[32m+[m[32m      '@ng-bootstrap/ng-bootstrap': 'node_modules/@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',[m
+     },[m
+     // packages tells the System loader how to load when no filename and/or no extension[m
+     packages: {[m
+warning: LF will be replaced by CRLF in src/systemjs.config.js.
+The file will have its original line endings in your working directory.

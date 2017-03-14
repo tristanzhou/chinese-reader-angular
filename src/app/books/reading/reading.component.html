@@ -1,0 +1,28 @@
+
+<div class="container">
+  <div class="row book frame framepadding">
+    <div class="col-2">
+      <div *ngIf="book" class="card bookdesc">
+        <h5>{{book.name}}</h5>
+        <div>
+            {{book.description}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="book" class="container" style="margin-top: 10px;">
+  <nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" [routerLink]="['/reading', book.id, 'page', 1]">Previous</a></li>
+      <li class="page-item"><a class="page-link" [routerLink]="['/reading', book.id, 'page', 2]">1</a></li>
+      <li class="page-item"><a class="page-link" [routerLink]="['/reading', book.id, 'page', 3]">2</a></li>
+      <li class="page-item"><a class="page-link" [routerLink]="['/reading', book.id, 'page', 4]">3</a></li>
+      <li class="page-item"><a class="page-link" [routerLink]="['/reading', book.id, 'page', 5]">Next</a></li>
+    </ul>
+  </nav>
+</div>
