@@ -1,6 +1,8 @@
 
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" 
+    data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="#">
@@ -12,26 +14,46 @@
         <a class="nav-link" [routerLink]="['/']">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Grade
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'basics' }">Basics</a>
-          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ searchText: '1' }">Elementary</a>
-          <a class="dropdown-item" href="#">Pre-intermediate</a>
-          <a class="dropdown-item" href="#">Intermediate</a>
-          <a class="dropdown-item" href="#">Upper-intermediate</a>
-          <a class="dropdown-item" href="#">Advanced</a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'basics' }">
+            Basics
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'elementary' }">
+            Elementary
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'pre-intermediate' }">
+            Pre-intermediate
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'intermediate' }">
+            Intermediate
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'upper-intermediate' }">
+            Upper-intermediate
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'advanced' }">
+            Advanced
+          </a>
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Literature
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Poem</a>
-          <a class="dropdown-item" href="#">Ci-poem</a>
-          <a class="dropdown-item" href="#">Idiom</a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'poem' }">
+            Poem
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'ci-poem' }">
+            Ci-poem
+          </a>
+          <a class="dropdown-item" [routerLink]="['/books']" [queryParams]="{ category: 'idiom' }">
+            Idiom
+          </a>
         </div>
       </li>
       <li class="nav-item">

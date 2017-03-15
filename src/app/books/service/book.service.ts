@@ -8,11 +8,11 @@ export class BookService {
     return Promise.resolve(BOOKS);
   }
 
-  getSearchBooks(id: number): Promise<Book[]> {
-    if (isNaN(id) || id == "") {
+  getSearchBooks(searchText: string): Promise<Book[]> {
+    if (!searchText || searchText == "") {
       return this.getBooks();
     }
-    return this.getBooks().then(books => books.filter(book => book.id === id));
+    return this.getBooks().then(books => books.filter(book => book.id === parseInt(searchText)));
   }
 
   getBooksSlowly(): Promise<Book[]> {

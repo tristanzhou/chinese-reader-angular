@@ -1,67 +1,44 @@
-<div *ngIf="page" class="card page">
-  <div class="card-block" [ngStyle]="{'background-color': page.data.backgroundColor}">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-8">
-          <div class="row">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-4">
-              <div class="text-center">
-              <div class="" style="font-size: 8rem;">
-                {{page.data.pinyin}}
-              </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="" style="position: absolute;bottom: 0;left: 0;">
-              <div class="charexample">
-                <ul class="" style="list-style:none;padding-left: 20px;padding-right: 20px;margin-top: 5px;margin-bottom: 5px;">
-                  <li class="" style="font-size: 24px;">{{page.data.pinyinexample.pinyin}}</li>
-                  <li class="" style="font-size: 24px;">{{page.data.pinyinexample.word}}</li>
-                </ul>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-              <div class="" style="padding-top: 10px;padding-bottom: 10px;">
-              <div class="pinyinexample">
-                <p class="" style="font-size: 24px;color: #FF9800;margin-top: 5px;margin-bottom: 5px;">
-                <span *ngFor="let pinyinexample of page.data.pinyingroup1"
-                  style="padding-left: 10px;padding-right: 10px;">
-                  {{pinyinexample}}
-                </span>
-                </p>
-              </div>
-              </div>
-          </div>
-          <div *ngIf="page.data.pinyingroup2" class="row justify-content-center">
-              <div class="">
-              <div class="pinyinexample">
-                <p class="" style="font-size: 24px;color: #FF9800;margin-top: 5px;margin-bottom: 5px;">
-                <span *ngFor="let pinyinexample of page.data.pinyingroup2" 
-                  style="padding-left: 10px;padding-right: 10px;">
-                  {{pinyinexample}}
-                </span>
-                </p>
-              </div>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-              <div class="text-center">
-              <div class="row wordexample">
-                <div class="" *ngFor="let wordexample of page.data.wordexample">
-                  <ul class="" style="list-style:none;padding-left: 20px;padding-right: 20px;padding-top: 10px;">
-                  <li class="" style="font-size: 36px;color: #FF9800;">{{wordexample.pinyin}}</li>
-                  <li class="" style="font-size: 36px;">{{wordexample.word}}</li>
-                  </ul>
-                </div>
-              </div>
-              </div>
+<div *ngIf="page" class="row align-items-center justify-content-center" 
+  [ngStyle]="{'background-color': page.data.backgroundColor}">
+  <div class="col-8">
+    <div class="row align-items-end">
+      <div class="col text-right pinyin">
+        {{page.data.pinyin}}
+      </div>
+      <div class="col">
+        <div class="pinyins">
+        <ul>
+          <li >{{page.data.pinyinexample.pinyin}}</li>
+          <li >{{page.data.pinyinexample.word}}</li>
+        </ul>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col text-center" *ngIf="page.data.pinyingroup1">
+        <div class="tones">
+        <span *ngFor="let pinyinexample of page.data.pinyingroup1">
+                  {{pinyinexample}}
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center" *ngIf="page.data.pinyingroup2">
+        <div class="tones">
+        <span *ngFor="let pinyinexample of page.data.pinyingroup2">
+          {{pinyinexample}}
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="words">
+      <ul *ngFor="let wordexample of page.data.wordexample">
+        <li class="">{{wordexample.pinyin}}</li>
+        <li class="">{{wordexample.word}}</li>
+      </ul>
     </div>
   </div>
 </div>

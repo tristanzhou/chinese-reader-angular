@@ -22,7 +22,7 @@ export class BooksComponent implements OnInit {
     this.route.queryParams
               .subscribe(params => {
                 this.bookService
-                    .getSearchBooks(+params['searchText'])
+                    .getSearchBooks(params['searchText'])
                     .then(books => this.books = books)
               });
   }

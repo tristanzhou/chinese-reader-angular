@@ -1,16 +1,22 @@
-
-<div class="container">
-  <div class="row book frame framepadding">
-    <div class="col-2">
-      <div *ngIf="book" class="card bookdesc">
-        <h5>{{book.name}}</h5>
-        <div>
-            {{book.description}}
+<div class="modal-dialog" style="max-width: 95%;">
+  <div class="modal-content shadow bg-grey">
+    <div class="modal-body">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <div *ngIf="book">
+            <h5>{{book.name}}</h5>
+            <div>
+                {{book.description}}
+            </div>
+          </div>
         </div>
+        <div class="col-md-8">
+          <router-outlet></router-outlet>
+        </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
-    <div class="col-md-8">
-      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

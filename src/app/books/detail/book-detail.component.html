@@ -1,20 +1,24 @@
-<div class="container">
-  <div class="row book frame framepadding">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-      <div *ngIf="book" class="card bookdesc">
-        <h5>{{book.name}}</h5>
-        <div>
-            {{book.description}}
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-            <a class="btn btn-primary btn-default" [routerLink]="['/reading', book.id]">Start reading</a>
+<div class="modal-dialog" style="max-width: 95%;">
+  <div class="modal-content shadow bg-grey">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div *ngIf="book" class="card page" >
+            <h5>{{book.name}}</h5>
+            <div>
+                {{book.description}}
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <a class="btn btn-primary btn-default" [routerLink]="['/reading', book.id]">Start reading</a>
+              </div>
+              <div class="col-md-10"></div>
+            </div>
           </div>
-          <div class="col-md-10"></div>
         </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
-    <div class="col-md-2"></div>
   </div>
 </div>
